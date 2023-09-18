@@ -1,0 +1,34 @@
+//
+//  MovieTableViewCell.swift
+//  MoviesiOSKata
+//
+//  Created by Jorge Sánchez on 3/1/17.
+//  Copyright © 2017 xurxodev. All rights reserved.
+//
+
+import UIKit
+
+class MovieTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var movieImageView: UIImageView!
+    
+    func configureCell(data movie : Movie ) {
+        self.movieTitleLabel.text = movie.title
+        self.movieImageView.load(url: URL(string: movie.image!)!)
+    }
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
