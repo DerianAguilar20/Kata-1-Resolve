@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DiskMovieRepository : MovieRepositoryProtocol {
+class DiskMovieRepository : MovieRepository {
     
     func getMovies() -> [Movie]{
         var movies:[Movie] = []
@@ -32,12 +32,6 @@ class DiskMovieRepository : MovieRepositoryProtocol {
             print("error serializing JSON: \(error)")
         }
         
-        simulateDelay()
-        
         return movies;
-    }
-    
-    func simulateDelay() -> Void{
-        sleep(2)
     }
 }

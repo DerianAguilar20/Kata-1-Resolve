@@ -8,21 +8,16 @@
 
 import UIKit
 
-protocol MovieRepositoryProtocol {
-    func getMovies() -> [Movie]
-}
-
 class MoviesViewController : UIViewController {
-
-    var movieRepository : MovieRepositoryProtocol!
-    var movies = [Movie]()
+    
+    private var presenter : ListMoviePresenter!
     
     @IBOutlet weak var moviesTableView: UITableView!
     
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBAction func refreshClicked(_ sender: UIButton) {
-        loadMovies()
+        presenter.viewDidLoad()
     }
     
     override func viewDidLoad() {
@@ -31,26 +26,13 @@ class MoviesViewController : UIViewController {
         moviesTableView.tableFooterView = UIView()
         moviesTableView.dataSource = self
         
-        loadMovies()
-    }
-    
-    func injectRepositoryDependency( movieRepository : MovieRepositoryProtocol) {
-        self.movieRepository = movieRepository
-    }
-    
-    func loadMovies() {
-        clearMoviesList()
-        reloadTable()
-        changeTextLabel(text: "Loading ...")
+        presenter.listMoviesView = self
         
-        DispatchQueue.global(qos: .background).async {
-            self.movies = self.movieRepository.getMovies()
-            
-            DispatchQueue.main.async {
-                self.reloadTable()
-                self.changeTextLabel(text: "Movies: " + String(self.movies.count))
-            }
-        }
+        presenter.viewDidLoad()
+    }
+    
+    func injectPresenter( presenter : ListMoviePresenter) {
+        self.presenter = presenter
     }
     
     func reloadTable() {
@@ -60,21 +42,31 @@ class MoviesViewController : UIViewController {
     func changeTextLabel(text message: String) {
         titleLabel.text = message
     }
+}
+
+extension MoviesViewController : ListMoviesView {
+    func refresh() {
+        reloadTable()
+        changeTextLabel(text: "Loading ...")
+    }
     
-    func clearMoviesList() {
-        movies.removeAll()
+    func loadMovies() {
+        DispatchQueue.main.async {
+            self.reloadTable()
+            self.changeTextLabel(text: "Movies: " + String(self.presenter.movies.count))
+        }
     }
 }
 
 extension MoviesViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return self.presenter.movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = moviesTableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieTableViewCell
         
-        let movie : Movie = movies[indexPath.item]
+        let movie : Movie = self.presenter.movies[indexPath.item]
         
         cell.configureCell(data: movie)
         

@@ -20,6 +20,7 @@
 		155F0C541DCA82EF00CAA83B /* Movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 155F0C531DCA82EF00CAA83B /* Movies.json */; };
 		155F0C561DCA832500CAA83B /* DiskMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F0C551DCA832500CAA83B /* DiskMovieRepository.swift */; };
 		861A15E92AB4B4CC00C57D7E /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A15E82AB4B4CC00C57D7E /* AppDependencies.swift */; };
+		8678A1DA2ABCC18000D2FB76 /* ListMoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8678A1D92ABCC18000D2FB76 /* ListMoviePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		155F0C531DCA82EF00CAA83B /* Movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Movies.json; sourceTree = "<group>"; };
 		155F0C551DCA832500CAA83B /* DiskMovieRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskMovieRepository.swift; sourceTree = "<group>"; };
 		861A15E82AB4B4CC00C57D7E /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
+		8678A1D92ABCC18000D2FB76 /* ListMoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMoviePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			children = (
 				155F0C4E1DCA756600CAA83B /* Model */,
 				155F0C4D1DCA755300CAA83B /* View */,
+				8678A1D82ABCC15500D2FB76 /* Presenter */,
 				155F0C4C1DCA754600CAA83B /* Data */,
 				1510DE9C1DC9469C0039CD8F /* AppDelegate.swift */,
 				861A15E82AB4B4CC00C57D7E /* AppDependencies.swift */,
@@ -167,6 +170,14 @@
 				155F0C4F1DCA758700CAA83B /* Movie.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8678A1D82ABCC15500D2FB76 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8678A1D92ABCC18000D2FB76 /* ListMoviePresenter.swift */,
+			);
+			name = Presenter;
 			sourceTree = "<group>";
 		};
 		DB15F21642D7101DCED85BD1 /* Frameworks */ = {
@@ -314,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8678A1DA2ABCC18000D2FB76 /* ListMoviePresenter.swift in Sources */,
 				861A15E92AB4B4CC00C57D7E /* AppDependencies.swift in Sources */,
 				1537F0051E1B9632005A0270 /* MovieTableViewCell.swift in Sources */,
 				1510DE9D1DC9469C0039CD8F /* AppDelegate.swift in Sources */,
