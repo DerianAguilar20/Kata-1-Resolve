@@ -10,7 +10,7 @@ import Foundation
 
 class DiskMovieRepository : MovieRepository {
     
-    func getMovies() -> [Movie]{
+    func getMovies() -> [Movie] {
         var movies:[Movie] = []
 
         let url = Bundle.main.url(forResource: "Movies", withExtension: "json")

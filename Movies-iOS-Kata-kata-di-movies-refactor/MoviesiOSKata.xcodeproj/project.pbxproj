@@ -149,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				155F0C531DCA82EF00CAA83B /* Movies.json */,
-				155F0C551DCA832500CAA83B /* DiskMovieRepository.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -168,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				155F0C4F1DCA758700CAA83B /* Movie.swift */,
+				155F0C551DCA832500CAA83B /* DiskMovieRepository.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

@@ -16,10 +16,6 @@ class MoviesViewController : UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBAction func refreshClicked(_ sender: UIButton) {
-        presenter.viewDidLoad()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +27,10 @@ class MoviesViewController : UIViewController {
     
     func injectPresenter( presenter : ListMoviePresenter) {
         self.presenter = presenter
+    }
+    
+    @IBAction func refreshClicked(_ sender: UIButton) {
+        presenter.viewDidLoad()
     }
     
     func reloadTable() {
