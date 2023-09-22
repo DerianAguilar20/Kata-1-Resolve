@@ -26,8 +26,6 @@ class MoviesViewController : UIViewController {
         moviesTableView.tableFooterView = UIView()
         moviesTableView.dataSource = self
         
-        presenter.listMoviesView = self
-        
         presenter.viewDidLoad()
     }
     
@@ -46,14 +44,16 @@ class MoviesViewController : UIViewController {
 
 extension MoviesViewController : ListMoviesView {
     func refresh() {
-        reloadTable()
-        changeTextLabel(text: "Loading ...")
-    }
-    
-    func loadMovies() {
         DispatchQueue.main.async {
             self.reloadTable()
-            self.changeTextLabel(text: "Movies: " + String(self.presenter.movies.count))
+            self.changeTextLabel(text: "Loading ...")
+        }
+    }
+    
+    func loadMovies(movies : [Movie]) {
+        DispatchQueue.main.async {
+            self.reloadTable()
+            self.changeTextLabel(text: "Movies: " + String(movies.count))
         }
     }
 }

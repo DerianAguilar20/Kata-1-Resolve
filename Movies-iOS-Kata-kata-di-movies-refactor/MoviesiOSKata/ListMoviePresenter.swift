@@ -12,13 +12,13 @@ protocol MovieRepository {
     func getMovies() -> [Movie]
 }
 
-protocol ListMoviesView : AnyObject {
+protocol ListMoviesView {
     func refresh ()
-    func loadMovies ()
+    func loadMovies (movies : [Movie])
 }
 
 class ListMoviePresenter {
-    weak var listMoviesView : ListMoviesView?
+    private var listMoviesView : ListMoviesView!
     var movieRepository : MovieRepository!
     
     var movies = [Movie]()
@@ -27,20 +27,23 @@ class ListMoviePresenter {
         self.movieRepository = movieRepository
     }
     
-    /*func injectListMovieViewDependency( listMovieView : ListMoviesView ) {
+    func injectListMovieViewDependency( listMovieView : ListMoviesView ) {
         self.listMoviesView = listMovieView
-    }*/
+    }
     
     func viewDidLoad () {
         refreshListMovies()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.listMovies()
-        }
+        listMovies()
     }
     
     func listMovies () {
-        movies = self.movieRepository.getMovies()
-        listMoviesView?.loadMovies()
+        DispatchQueue.global(qos: .background).async {
+            self.movies = self.movieRepository.getMovies()
+            
+            DispatchQueue.main.async {
+                self.listMoviesView?.loadMovies(movies : self.movies)
+            }
+        }
     }
     
     func refreshListMovies () {
