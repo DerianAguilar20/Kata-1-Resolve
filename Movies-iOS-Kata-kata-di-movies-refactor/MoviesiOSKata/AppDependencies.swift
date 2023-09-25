@@ -9,12 +9,17 @@
 import UIKit
 
 class AppDependencies {
+    let movieRepositoryDependency = DiskMovieRepository()
+    let listMoviePresenter = ListMoviePresenter()
+    
     func installRootViewControllerintoWindow(window : UIWindow) {
-        let movieRepositoryDependency = DiskMovieRepository()
-        
         if let navigationController = window.rootViewController as? UINavigationController {
             if let moviesViewController = navigationController.visibleViewController as? MoviesViewController {
-                moviesViewController.injectRepositoryDependency(movieRepository: movieRepositoryDependency)
+                
+                moviesViewController.setPresenter(presenter: listMoviePresenter)
+                
+                listMoviePresenter.setMovieRepository(movieRepository: movieRepositoryDependency)
+                listMoviePresenter.setListMovieView(listMovieView: moviesViewController)
             }
         }
     }

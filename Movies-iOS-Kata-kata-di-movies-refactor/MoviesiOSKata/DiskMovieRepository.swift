@@ -8,9 +8,9 @@
 
 import Foundation
 
-class DiskMovieRepository : MovieRepositoryProtocol {
+class DiskMovieRepository : MovieRepository {
     
-    func getMovies() -> [Movie]{
+    func getMovies() -> [Movie] {
         var movies:[Movie] = []
 
         let url = Bundle.main.url(forResource: "Movies", withExtension: "json")
@@ -38,6 +38,6 @@ class DiskMovieRepository : MovieRepositoryProtocol {
     }
     
     func simulateDelay() -> Void{
-        sleep(2)
-    }
+            sleep(2)
+        }
 }
