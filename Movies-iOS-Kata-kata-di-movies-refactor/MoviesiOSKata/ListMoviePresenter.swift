@@ -19,19 +19,19 @@ protocol ListMoviesView {
 
 class ListMoviePresenter {
     private var listMoviesView : ListMoviesView!
-    var movieRepository : MovieRepository!
+    private var movieRepository : MovieRepository!
     
     var movies = [Movie]()
     
-    func injectRepositoryDependency( movieRepository : MovieRepository) {
+    func setMovieRepository( movieRepository : MovieRepository) {
         self.movieRepository = movieRepository
     }
     
-    func injectListMovieViewDependency( listMovieView : ListMoviesView ) {
+    func setListMovieView( listMovieView : ListMoviesView ) {
         self.listMoviesView = listMovieView
     }
     
-    func viewDidLoad () {
+    func reloadMovies () {
         refreshListMovies()
         listMovies()
     }

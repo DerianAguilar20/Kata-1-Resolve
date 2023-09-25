@@ -118,7 +118,6 @@
 				155F0C4E1DCA756600CAA83B /* Model */,
 				155F0C4D1DCA755300CAA83B /* View */,
 				8678A1D82ABCC15500D2FB76 /* Presenter */,
-				155F0C4C1DCA754600CAA83B /* Data */,
 				1510DE9C1DC9469C0039CD8F /* AppDelegate.swift */,
 				861A15E82AB4B4CC00C57D7E /* AppDependencies.swift */,
 				1510DEA31DC9469C0039CD8F /* Assets.xcassets */,
@@ -168,6 +167,7 @@
 			children = (
 				155F0C4F1DCA758700CAA83B /* Movie.swift */,
 				155F0C551DCA832500CAA83B /* DiskMovieRepository.swift */,
+				155F0C4C1DCA754600CAA83B /* Data */,
 			);
 			name = Model;
 			sourceTree = "<group>";

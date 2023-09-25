@@ -22,15 +22,15 @@ class MoviesViewController : UIViewController {
         moviesTableView.tableFooterView = UIView()
         moviesTableView.dataSource = self
         
-        presenter.viewDidLoad()
+        presenter.reloadMovies()
     }
     
-    func injectPresenter( presenter : ListMoviePresenter) {
+    func setPresenter( presenter : ListMoviePresenter) {
         self.presenter = presenter
     }
     
     @IBAction func refreshClicked(_ sender: UIButton) {
-        presenter.viewDidLoad()
+        presenter.reloadMovies()
     }
     
     func reloadTable() {
