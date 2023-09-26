@@ -17,15 +17,16 @@ class AppDependencies {
     func installRootViewControllerintoWindow(window : UIWindow) {
         if let navigationController = window.rootViewController as? UINavigationController {
             if let moviesViewController = navigationController.visibleViewController as? MoviesViewController {
-                listMoviesRouter.setListmoviesView(listMoviesView: moviesViewController)
-                
                 moviesViewController.setPresenter(presenter: listMoviePresenter)
+                
+                listMoviesRouter.setListmoviesView(listMoviesView: moviesViewController)
                 
                 listMoviesInteractor.setMovieRepository(movieRepository: movieRepositoryDependency)
                 listMoviesInteractor.setPresenter(presenter: listMoviePresenter)
                 
                 listMoviePresenter.setListMovieInteractor(listMovieInteractor: listMoviesInteractor)
                 listMoviePresenter.setListMovieView(listMovieView: moviesViewController)
+                listMoviePresenter.setListMovieRouter(listMovieRouter: listMoviesRouter)
             }
         }
     }

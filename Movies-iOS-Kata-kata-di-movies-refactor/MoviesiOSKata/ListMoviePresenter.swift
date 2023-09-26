@@ -13,9 +13,10 @@ protocol ListMoviesView {
     func loadMovies (movies : [Movie])
 }
 
-class ListMoviePresenter : NotifyPresenter {
+class ListMoviePresenter {
     private var listMoviesView : ListMoviesView!
     private var listMovieInteractor : ListMovieInteractor!
+    private var listMovieRouter : ListMoviesRouter!
     
     var movies = [Movie]()
     
@@ -25,6 +26,10 @@ class ListMoviePresenter : NotifyPresenter {
     
     func setListMovieInteractor( listMovieInteractor : ListMovieInteractor ) {
         self.listMovieInteractor = listMovieInteractor
+    }
+    
+    func setListMovieRouter ( listMovieRouter : ListMoviesRouter) {
+        self.listMovieRouter = listMovieRouter
     }
     
     func reloadMovies () {
@@ -40,7 +45,9 @@ class ListMoviePresenter : NotifyPresenter {
         movies.removeAll()
         listMoviesView?.refresh()
     }
-    
+}
+
+extension ListMoviePresenter  : NotifyPresenter {
     func showListMovies(movies: [Movie]) {
         self.movies = movies
         listMoviesView.loadMovies(movies: movies)
