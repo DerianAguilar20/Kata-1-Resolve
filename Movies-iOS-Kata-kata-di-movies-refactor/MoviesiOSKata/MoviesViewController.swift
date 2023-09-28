@@ -44,17 +44,13 @@ class MoviesViewController : UIViewController {
 
 extension MoviesViewController : ListMoviesView {
     func refresh() {
-        DispatchQueue.main.async {
-            self.reloadTable()
-            self.changeTextLabel(text: "Loading ...")
-        }
+        reloadTable()
+        changeTextLabel(text: "Loading ...")
     }
     
     func loadMovies(movies : [Movie]) {
-        DispatchQueue.main.async {
-            self.reloadTable()
-            self.changeTextLabel(text: "Movies: " + String(movies.count))
-        }
+        reloadTable()
+        changeTextLabel(text: "Movies: " + String(movies.count))
     }
 }
 

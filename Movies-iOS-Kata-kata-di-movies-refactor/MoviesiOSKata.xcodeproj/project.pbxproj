@@ -20,6 +20,7 @@
 		155F0C541DCA82EF00CAA83B /* Movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 155F0C531DCA82EF00CAA83B /* Movies.json */; };
 		155F0C561DCA832500CAA83B /* DiskMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F0C551DCA832500CAA83B /* DiskMovieRepository.swift */; };
 		861A15E92AB4B4CC00C57D7E /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A15E82AB4B4CC00C57D7E /* AppDependencies.swift */; };
+		8645CBCF2AC21C6000F7D04D /* GetListMoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8645CBCE2AC21C6000F7D04D /* GetListMoviesInteractor.swift */; };
 		8678A1DA2ABCC18000D2FB76 /* ListMoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8678A1D92ABCC18000D2FB76 /* ListMoviePresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		155F0C531DCA82EF00CAA83B /* Movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Movies.json; sourceTree = "<group>"; };
 		155F0C551DCA832500CAA83B /* DiskMovieRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskMovieRepository.swift; sourceTree = "<group>"; };
 		861A15E82AB4B4CC00C57D7E /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
+		8645CBCE2AC21C6000F7D04D /* GetListMoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListMoviesInteractor.swift; sourceTree = "<group>"; };
 		8678A1D92ABCC18000D2FB76 /* ListMoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMoviePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,9 +117,7 @@
 		1510DE9B1DC9469C0039CD8F /* MoviesiOSKata */ = {
 			isa = PBXGroup;
 			children = (
-				155F0C4E1DCA756600CAA83B /* Model */,
-				155F0C4D1DCA755300CAA83B /* View */,
-				8678A1D82ABCC15500D2FB76 /* Presenter */,
+				8604FDF62AC47B73000C3B19 /* ListMoviesModul */,
 				1510DE9C1DC9469C0039CD8F /* AppDelegate.swift */,
 				861A15E82AB4B4CC00C57D7E /* AppDependencies.swift */,
 				1510DEA31DC9469C0039CD8F /* Assets.xcassets */,
@@ -162,14 +162,42 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		155F0C4E1DCA756600CAA83B /* Model */ = {
+		8604FDF52AC467D0000C3B19 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
-				155F0C4F1DCA758700CAA83B /* Movie.swift */,
 				155F0C551DCA832500CAA83B /* DiskMovieRepository.swift */,
 				155F0C4C1DCA754600CAA83B /* Data */,
 			);
-			name = Model;
+			name = DataManager;
+			sourceTree = "<group>";
+		};
+		8604FDF62AC47B73000C3B19 /* ListMoviesModul */ = {
+			isa = PBXGroup;
+			children = (
+				86DDFAA92AC5C9DB0082A8A5 /* Router */,
+				8645CBCC2AC21A2800F7D04D /* Entity */,
+				8678A1D82ABCC15500D2FB76 /* Presenter */,
+				8645CBCB2AC21A1800F7D04D /* Interactor */,
+				155F0C4D1DCA755300CAA83B /* View */,
+			);
+			name = ListMoviesModul;
+			sourceTree = "<group>";
+		};
+		8645CBCB2AC21A1800F7D04D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8645CBCE2AC21C6000F7D04D /* GetListMoviesInteractor.swift */,
+				8604FDF52AC467D0000C3B19 /* DataManager */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		8645CBCC2AC21A2800F7D04D /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				155F0C4F1DCA758700CAA83B /* Movie.swift */,
+			);
+			name = Entity;
 			sourceTree = "<group>";
 		};
 		8678A1D82ABCC15500D2FB76 /* Presenter */ = {
@@ -178,6 +206,13 @@
 				8678A1D92ABCC18000D2FB76 /* ListMoviePresenter.swift */,
 			);
 			name = Presenter;
+			sourceTree = "<group>";
+		};
+		86DDFAA92AC5C9DB0082A8A5 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Router;
 			sourceTree = "<group>";
 		};
 		DB15F21642D7101DCED85BD1 /* Frameworks */ = {
@@ -332,6 +367,7 @@
 				155F0C501DCA758700CAA83B /* Movie.swift in Sources */,
 				155F0C561DCA832500CAA83B /* DiskMovieRepository.swift in Sources */,
 				1537F0071E1B9697005A0270 /* MoviesViewController.swift in Sources */,
+				8645CBCF2AC21C6000F7D04D /* GetListMoviesInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,10 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let appDependencies = AppDependencies()
+    let view = MoviesViewController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        appDependencies.installRootViewControllerintoWindow(window: window!)
+        appDependencies.configureDependencies(window: window!)
         
         return true
     }

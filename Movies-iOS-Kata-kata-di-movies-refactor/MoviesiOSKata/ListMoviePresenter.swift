@@ -8,46 +8,43 @@
 
 import Foundation
 
-protocol MovieRepository {
-    func getMovies() -> [Movie]
-}
-
-protocol ListMoviesView {
+protocol ListMoviesView : AnyObject {
     func refresh ()
     func loadMovies (movies : [Movie])
 }
 
 class ListMoviePresenter {
-    private var listMoviesView : ListMoviesView!
-    private var movieRepository : MovieRepository!
+    private weak var listMoviesView : ListMoviesView?
+    private var getListMovieInteractor : GetListMovieInteractorInput!
     
     var movies = [Movie]()
     
-    func setMovieRepository( movieRepository : MovieRepository) {
-        self.movieRepository = movieRepository
+    func setListMovieInteractor( listMovieInteractor : GetListMovieInteractorInput ) {
+        self.getListMovieInteractor = listMovieInteractor
     }
     
-    func setListMovieView( listMovieView : ListMoviesView ) {
-        self.listMoviesView = listMovieView
+    func setListMoviesView( listMoviesView : ListMoviesView) {
+        self.listMoviesView = listMoviesView
     }
     
     func reloadMovies () {
         refreshListMovies()
-        listMovies()
+        getListMovies()
     }
     
-    func listMovies () {
-        DispatchQueue.global(qos: .background).async {
-            self.movies = self.movieRepository.getMovies()
-            
-            DispatchQueue.main.async {
-                self.listMoviesView?.loadMovies(movies : self.movies)
-            }
-        }
+    func getListMovies () {
+        getListMovieInteractor.getListMovies()
     }
     
     func refreshListMovies () {
         movies.removeAll()
         listMoviesView?.refresh()
+    }
+}
+
+extension ListMoviePresenter  : GetListMovieInteractorOutput {
+    func showListMovies(movies: [Movie]) {
+        self.movies = movies
+        listMoviesView?.loadMovies(movies: movies)
     }
 }
