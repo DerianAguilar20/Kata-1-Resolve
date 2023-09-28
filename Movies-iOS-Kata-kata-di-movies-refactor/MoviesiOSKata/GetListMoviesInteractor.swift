@@ -12,7 +12,7 @@ protocol MovieRepository {
     func getMovies() -> [Movie]
 }
 
-protocol GetListMovieInteractorOutput : AnyObject {
+protocol GetListMovieInteractorOutput {
     func showListMovies( movies : [Movie])
 }
 
@@ -22,7 +22,7 @@ protocol GetListMovieInteractorInput {
 
 class GetListMoviesInteractor : GetListMovieInteractorInput {
     private var movieRepository : MovieRepository!
-    private weak var presenter : GetListMovieInteractorOutput!
+    private var presenter : GetListMovieInteractorOutput!
     
     func setMovieRepository( movieRepository : MovieRepository) {
         self.movieRepository = movieRepository

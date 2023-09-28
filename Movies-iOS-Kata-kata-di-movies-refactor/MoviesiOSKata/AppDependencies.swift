@@ -8,38 +8,6 @@
 
 import UIKit
 
-class ApDependencies {
-    let movieRepositoryDependency = DiskMovieRepository()
-    let listMoviePresenter = ListMoviePresenter()
-    let listMoviesInteractor = GetListMoviesInteractor()
-    var listMoviesView : ListMoviesView!
-    
-    func configureDependencies (window : UIWindow) {
-        injectDependenciesInteractor()
-        injectDependenciesListMoviesView(window: window)
-        injectDependenciesPresenter()
-    }
-    
-    func injectDependenciesListMoviesView(window : UIWindow) {
-        if let navigationController = window.rootViewController as? UINavigationController {
-            if let moviesViewController = navigationController.visibleViewController as? MoviesViewController {
-                listMoviesView = moviesViewController
-                moviesViewController.setPresenter(presenter: listMoviePresenter)
-            }
-        }
-    }
-        
-    func injectDependenciesPresenter () {
-        listMoviePresenter.setListMovieInteractor(listMovieInteractor: listMoviesInteractor)
-        listMoviePresenter.setListMoviesView(listMoviesView: listMoviesView)
-    }
-    
-    func injectDependenciesInteractor () {
-        listMoviesInteractor.setMovieRepository(movieRepository: movieRepositoryDependency)
-        listMoviesInteractor.setPresenter(presenter: listMoviePresenter)
-    }
-}
-
 class AppDependencies {
     let movieRepositoryDependency = DiskMovieRepository()
     let listMoviePresenter = ListMoviePresenter()

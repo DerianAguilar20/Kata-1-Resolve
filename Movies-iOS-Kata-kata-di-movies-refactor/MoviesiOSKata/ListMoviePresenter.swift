@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol ListMoviesView : AnyObject {
+protocol ListMoviesView {
     func refresh ()
     func loadMovies (movies : [Movie])
 }
 
 class ListMoviePresenter {
-    private weak var listMoviesView : ListMoviesView?
+    private var listMoviesView : ListMoviesView?
     private var getListMovieInteractor : GetListMovieInteractorInput!
     
     var movies = [Movie]()
