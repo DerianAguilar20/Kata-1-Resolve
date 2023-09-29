@@ -15,7 +15,11 @@ protocol ListMovieRouter {
 
 class ListMoviesRouter : ListMovieRouter {
     private var listMoviesView : UIViewController!
-    private let movieDetailsRouter = MovieDetailsRouter()
+    private var movieDetailsRouter : MovieDetailRouter!
+    
+    func setMovieDetailsRouter ( movieDetailsRouter : MovieDetailRouter) {
+        self.movieDetailsRouter = movieDetailsRouter
+    }
     
     func setListMoviesView ( listMoviesView : UIViewController) {
         self.listMoviesView = listMoviesView

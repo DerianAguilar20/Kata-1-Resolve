@@ -46,6 +46,7 @@ class AppDependencies {
     
     func injectDependenciesRouter ( view : UIViewController) {
         listMoviesRouter.setListMoviesView(listMoviesView: view)
+        listMoviesRouter.setMovieDetailsRouter(movieDetailsRouter: movieDetailsRouter)
     }
     
     // Modulo Detalle
