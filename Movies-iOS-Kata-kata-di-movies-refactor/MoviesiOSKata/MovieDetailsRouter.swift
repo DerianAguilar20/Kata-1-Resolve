@@ -21,19 +21,3 @@ class MovieDetailsRouter : MovieDetailRouter {
         viewReference.navigationController?.present(view, animated: true)
     }
 }
-
-/*
- let repository = DiskMovieRepository()
- let view = MovieDetailsViewController()
- let presenter = MovieDetailsPresenter()
- let interactor = GetMovieDetailsInteractor()
- 
- interactor.setMovieRepository(movieRepository: repository)
- interactor.setPresenter(presenter: presenter)
- 
- presenter.setInteractor(interactor: interactor)
- presenter.setMovieDetailView(movieDetailsView: view)
- presenter.setTitle(title: titleMovie)
- 
- view.setPresenter(presenter: presenter)
- */
