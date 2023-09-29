@@ -14,8 +14,9 @@ protocol ListMoviesView {
 }
 
 class ListMoviePresenter {
-    private var listMoviesView : ListMoviesView?
+    private var listMoviesView : ListMoviesView!
     private var getListMovieInteractor : GetListMovieInteractorInput!
+    private var listMoviesRouter : ListMovieRouter!
     
     var movies = [Movie]()
     
@@ -25,6 +26,15 @@ class ListMoviePresenter {
     
     func setListMoviesView( listMoviesView : ListMoviesView) {
         self.listMoviesView = listMoviesView
+    }
+    
+    func setListMovieRouter ( listMoviesRouter : ListMovieRouter) {
+        self.listMoviesRouter = listMoviesRouter
+    }
+    
+    func presentDetailMovie ( index : Int) {
+        let title = movies[index].title
+        listMoviesRouter.presentMovieDetailsView(titleMovie: title!)
     }
     
     func reloadMovies () {
