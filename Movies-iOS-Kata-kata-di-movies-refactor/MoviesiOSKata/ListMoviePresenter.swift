@@ -33,8 +33,12 @@ class ListMoviePresenter {
     }
     
     func presentDetailMovie ( index : Int) {
-        let title = movies[index].title
-        listMoviesRouter.presentMovieDetailsView(titleMovie: title!)
+        let title = getTitleMovie(index: index)
+        listMoviesRouter.presentMovieDetailsView(titleMovie: title)
+    }
+    
+    func getTitleMovie ( index : Int) -> String {
+        movies[index].title!
     }
     
     func reloadMovies () {

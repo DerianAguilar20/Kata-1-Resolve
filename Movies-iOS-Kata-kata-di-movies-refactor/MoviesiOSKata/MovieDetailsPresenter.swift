@@ -6,8 +6,6 @@
 //  Copyright © 2023 xurxodev. All rights reserved.
 //
 
-import Foundation
-
 protocol MovieDetailsView {
     func showMovieDetails ( movie : Movie)
 }

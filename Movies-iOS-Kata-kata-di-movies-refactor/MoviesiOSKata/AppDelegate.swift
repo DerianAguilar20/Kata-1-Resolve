@@ -13,11 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let appDependencies = AppDependencies()
-    let view = MoviesViewController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        appDependencies.configureDependenciesListMoviesModul(window: window!)
+        appDependencies.configureInitialDependencies(window: window!)
         
         return true
     }

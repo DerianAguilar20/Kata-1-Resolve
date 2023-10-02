@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsViewController" customModule="MoviesiOSKata" customModuleProvider="target">
             <connections>
                 <outlet property="imageMovie" destination="43p-0b-dxY" id="xrP-zl-0us"/>
-                <outlet property="nameMovie" destination="h5f-WB-8Lz" id="9sK-Ff-TZy"/>
+                <outlet property="nameMovie" destination="6pL-9q-Pok" id="bOW-eb-FLY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,26 +20,28 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5f-WB-8Lz" userLabel="title">
-                    <rect key="frame" x="12" y="102" width="369" height="0.0"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="43p-0b-dxY" userLabel="imageMovie">
+                    <rect key="frame" x="5" y="64" width="383" height="389"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="389" id="iA9-bg-igq"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pL-9q-Pok" userLabel="title">
+                    <rect key="frame" x="12" y="481" width="369" height="0.0"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="43p-0b-dxY" userLabel="imageMovie">
-                    <rect key="frame" x="5" y="131" width="383" height="572"/>
-                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h5f-WB-8Lz" secondAttribute="trailing" constant="12" id="IS3-yO-DHL"/>
-                <constraint firstItem="h5f-WB-8Lz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="43" id="U93-Iu-hah"/>
-                <constraint firstItem="43p-0b-dxY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="YK3-22-gSc"/>
-                <constraint firstItem="43p-0b-dxY" firstAttribute="top" secondItem="h5f-WB-8Lz" secondAttribute="bottom" constant="29" id="hnj-bF-rGF"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="43p-0b-dxY" secondAttribute="trailing" constant="5" id="hvl-vL-dbG"/>
-                <constraint firstItem="h5f-WB-8Lz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="odE-q9-dJQ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="43p-0b-dxY" secondAttribute="bottom" constant="115" id="tdw-e3-zHi"/>
+                <constraint firstItem="6pL-9q-Pok" firstAttribute="top" secondItem="43p-0b-dxY" secondAttribute="bottom" constant="28" id="4BK-Tt-ojV"/>
+                <constraint firstItem="43p-0b-dxY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="GIj-bG-gPw"/>
+                <constraint firstItem="6pL-9q-Pok" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="GdG-aP-3tg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="43p-0b-dxY" secondAttribute="trailing" constant="5" id="Uvj-Sl-Gqm"/>
+                <constraint firstItem="43p-0b-dxY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="YM4-55-kAI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6pL-9q-Pok" secondAttribute="trailing" constant="12" id="iki-7s-q6E"/>
             </constraints>
             <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
         </view>

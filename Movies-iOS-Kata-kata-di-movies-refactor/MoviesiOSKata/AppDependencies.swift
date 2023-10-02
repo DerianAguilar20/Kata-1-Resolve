@@ -15,16 +15,18 @@ class AppDependencies {
     let listMoviesRouter = ListMoviesRouter()
     
     let movieDetailsRouter = MovieDetailsRouter()
+    var view : MovieDetailsViewController!
+    var presenter : MovieDetailsPresenter!
+    var interactor : GetMovieDetailsInteractor!
     
-    // Modulo Listar Peliculas
-    
-    func configureDependenciesListMoviesModul (window : UIWindow) {
+    func configureInitialDependencies (window : UIWindow) {
         if let navigationController = window.rootViewController as? UINavigationController {
             if let moviesViewController = navigationController.visibleViewController as? MoviesViewController {
                 injectDependenciesInteractor()
                 injectDependenciesPresenter(view: moviesViewController)
                 injectDependenciesListMoviesView(view: moviesViewController)
                 injectDependenciesRouter(view: moviesViewController)
+                injectDependenciesRouterDetail()
             }
         }
     }
@@ -49,20 +51,18 @@ class AppDependencies {
         listMoviesRouter.setMovieDetailsRouter(movieDetailsRouter: movieDetailsRouter)
     }
     
-    // Modulo Detalle
-    
-    var view : MovieDetailsViewController!
-    var presenter : MovieDetailsPresenter!
-    var interactor : GetMovieDetailsInteractor!
-    
-    func detailConfig(titleMovie : String) -> MovieDetailsViewController {
-        view = MovieDetailsViewController()
-        presenter = MovieDetailsPresenter()
-        interactor = GetMovieDetailsInteractor()
+    func configMovieDetailModul(titleMovie : String) -> MovieDetailsViewController {
+        instanceClassDetailModul()
         
         injectDependenciesModulDetail(presenter: presenter, interactor: interactor, view: view, titleMovie: titleMovie)
         
         return view
+    }
+    
+    func instanceClassDetailModul () {
+        view = MovieDetailsViewController()
+        presenter = MovieDetailsPresenter()
+        interactor = GetMovieDetailsInteractor()
     }
     
     func injectDependenciesModulDetail (presenter : MovieDetailsPresenter, interactor : GetMovieDetailsInteractor, view : MovieDetailsViewController, titleMovie : String) {
@@ -84,5 +84,9 @@ class AppDependencies {
     
     func injectDependenciesDetailView(presenter: MovieDetailsPresenter) {
         view.setPresenter(presenter: presenter)
+    }
+    
+    func injectDependenciesRouterDetail () {
+        movieDetailsRouter.setAppDependencies(appDependencies: self)
     }
 }

@@ -187,11 +187,11 @@
 		8604FDF62AC47B73000C3B19 /* ListMoviesModul */ = {
 			isa = PBXGroup;
 			children = (
-				86DDFAA92AC5C9DB0082A8A5 /* Router */,
-				8645CBCC2AC21A2800F7D04D /* Entity */,
-				8678A1D82ABCC15500D2FB76 /* Presenter */,
-				8645CBCB2AC21A1800F7D04D /* Interactor */,
 				155F0C4D1DCA755300CAA83B /* View */,
+				8645CBCB2AC21A1800F7D04D /* Interactor */,
+				8678A1D82ABCC15500D2FB76 /* Presenter */,
+				8645CBCC2AC21A2800F7D04D /* Entity */,
+				86DDFAA92AC5C9DB0082A8A5 /* Router */,
 			);
 			name = ListMoviesModul;
 			sourceTree = "<group>";
