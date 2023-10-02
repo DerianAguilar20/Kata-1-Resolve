@@ -30,8 +30,7 @@ class GetMovieDetailsInteractor : GetMovieDetailsInteractorInput {
     
     func getMovieDetails(title: String) {
         DispatchQueue.global(qos: .background).async {
-            let movies : [Movie] = self.movieRepository.getMovies()
-            let movie = movies.first(where: { $0.title == title})!
+            let movie = self.movieRepository.getMovieDetails(title: title)
             DispatchQueue.main.async {
                 self.presenter.showMovieDetails(movie: movie)
             }

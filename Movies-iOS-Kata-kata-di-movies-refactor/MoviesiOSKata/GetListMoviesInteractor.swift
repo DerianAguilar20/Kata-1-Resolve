@@ -10,6 +10,7 @@ import Foundation
 
 protocol MovieRepository {
     func getMovies() -> [Movie]
+    func getMovieDetails( title : String) -> Movie
 }
 
 protocol GetListMovieInteractorOutput {

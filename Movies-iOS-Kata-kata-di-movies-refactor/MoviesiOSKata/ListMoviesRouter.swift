@@ -6,7 +6,6 @@
 //  Copyright © 2023 xurxodev. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol ListMovieRouter {

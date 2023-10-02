@@ -65,7 +65,7 @@ class AppDependencies {
         movieDetailsInteractor = GetMovieDetailsInteractor()
     }
     
-    func configClassModulDetail (titleMovie : String) {
+    func configClassModulDetail ( titleMovie : String) {
         injectDependenciesDetailInteractor()
         injectDependenciesDetailPresenter(titleMovie: titleMovie)
         injectDependenciesDetailView()
@@ -76,7 +76,7 @@ class AppDependencies {
         movieDetailsInteractor.setPresenter(presenter: movieDetailsPresenter)
     }
     
-    func injectDependenciesDetailPresenter(titleMovie : String) {
+    func injectDependenciesDetailPresenter( titleMovie : String) {
         movieDetailsPresenter.setInteractor(interactor: movieDetailsInteractor)
         movieDetailsPresenter.setMovieDetailView(movieDetailsView: movieDetailsView)
         movieDetailsPresenter.setTitle(title: titleMovie)
