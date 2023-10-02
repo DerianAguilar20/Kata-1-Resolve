@@ -66,23 +66,23 @@ class AppDependencies {
     }
     
     func configClassModulDetail (titleMovie : String) {
-        injectDependenciesDetailInteractor(presenter: movieDetailsPresenter)
-        injectDependenciesDetailPresenter(view: movieDetailsView, interactor: movieDetailsInteractor, titleMovie: titleMovie)
-        injectDependenciesDetailView(presenter: movieDetailsPresenter)
+        injectDependenciesDetailInteractor()
+        injectDependenciesDetailPresenter(titleMovie: titleMovie)
+        injectDependenciesDetailView()
     }
     
-    func injectDependenciesDetailInteractor(presenter: MovieDetailsPresenter) {
+    func injectDependenciesDetailInteractor() {
         movieDetailsInteractor.setMovieRepository(movieRepository: movieRepositoryDependency)
         movieDetailsInteractor.setPresenter(presenter: movieDetailsPresenter)
     }
     
-    func injectDependenciesDetailPresenter(view: MovieDetailsViewController, interactor: GetMovieDetailsInteractor, titleMovie : String) {
+    func injectDependenciesDetailPresenter(titleMovie : String) {
         movieDetailsPresenter.setInteractor(interactor: movieDetailsInteractor)
         movieDetailsPresenter.setMovieDetailView(movieDetailsView: movieDetailsView)
         movieDetailsPresenter.setTitle(title: titleMovie)
     }
     
-    func injectDependenciesDetailView(presenter: MovieDetailsPresenter) {
+    func injectDependenciesDetailView() {
         movieDetailsView.setPresenter(presenter: movieDetailsPresenter)
     }
     
