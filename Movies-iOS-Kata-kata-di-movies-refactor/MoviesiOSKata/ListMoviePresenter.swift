@@ -6,11 +6,14 @@
 //  Copyright © 2023 xurxodev. All rights reserved.
 //
 
-import Foundation
 
 protocol ListMoviesView {
     func refresh ()
     func loadMovies (movies : [Movie])
+}
+
+protocol ListMovieRouter {
+    func presentMovieDetailsView ( titleMovie : String)
 }
 
 class ListMoviePresenter {
@@ -34,6 +37,10 @@ class ListMoviePresenter {
     
     func presentDetailMovie ( index : Int) {
         let title = getTitleMovie(index: index)
+        presentMovieDetail(title: title)
+    }
+    
+    func presentMovieDetail ( title : String) {
         listMoviesRouter.presentMovieDetailsView(titleMovie: title)
     }
     

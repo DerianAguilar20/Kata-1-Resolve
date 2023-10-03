@@ -46,7 +46,7 @@ class AppDependencies {
         listMoviesInteractor.setPresenter(presenter: listMoviePresenter)
     }
     
-    func injectDependenciesRouter ( view : UIViewController) {
+    func injectDependenciesRouter ( view : ListMoviesView) {
         listMoviesRouter.setListMoviesView(listMoviesView: view)
         listMoviesRouter.setMovieDetailsRouter(movieDetailsRouter: movieDetailsRouter)
     }

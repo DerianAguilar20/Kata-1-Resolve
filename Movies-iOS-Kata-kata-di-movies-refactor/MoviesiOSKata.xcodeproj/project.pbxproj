@@ -235,7 +235,6 @@
 				86FD7EEA2AC70A5500674601 /* View */,
 				86FD7EE92AC70A4900674601 /* Interactor */,
 				86FD7EE82AC70A3F00674601 /* Presenter */,
-				86FD7EE72AC70A3800674601 /* Entity */,
 				86FD7EE62AC70A2F00674601 /* Router */,
 			);
 			name = MovieDetailsModul;
@@ -247,13 +246,6 @@
 				86FD7EF52AC7105600674601 /* MovieDetailsRouter.swift */,
 			);
 			name = Router;
-			sourceTree = "<group>";
-		};
-		86FD7EE72AC70A3800674601 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Entity;
 			sourceTree = "<group>";
 		};
 		86FD7EE82AC70A3F00674601 /* Presenter */ = {

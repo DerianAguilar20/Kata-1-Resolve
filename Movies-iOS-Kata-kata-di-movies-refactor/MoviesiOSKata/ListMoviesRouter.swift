@@ -8,23 +8,19 @@
 
 import UIKit
 
-protocol ListMovieRouter {
-    func presentMovieDetailsView ( titleMovie : String)
-}
-
 class ListMoviesRouter : ListMovieRouter {
-    private var listMoviesView : UIViewController!
+    private var listMoviesView : ListMoviesView!
     private var movieDetailsRouter : MovieDetailRouter!
     
     func setMovieDetailsRouter ( movieDetailsRouter : MovieDetailRouter) {
         self.movieDetailsRouter = movieDetailsRouter
     }
     
-    func setListMoviesView ( listMoviesView : UIViewController) {
+    func setListMoviesView ( listMoviesView : ListMoviesView) {
         self.listMoviesView = listMoviesView
     }
     
     func presentMovieDetailsView ( titleMovie : String) {
-        movieDetailsRouter.presentMovieDetailsView(viewReference: listMoviesView, titleMovie: titleMovie)
+        movieDetailsRouter.presentMovieDetailsView(viewReference: listMoviesView as! UIViewController, titleMovie: titleMovie)
     }
 }
