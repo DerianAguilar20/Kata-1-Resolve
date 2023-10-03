@@ -17,7 +17,6 @@ class AppDependencies {
     let movieDetailsRouter = MovieDetailsRouter()
     var movieDetailsView : MovieDetailsViewController!
     var movieDetailsPresenter : MovieDetailsPresenter!
-    var movieDetailsInteractor : GetMovieDetailsInteractor!
     
     func configureInitialDependencies (window : UIWindow) {
         if let navigationController = window.rootViewController as? UINavigationController {
@@ -51,10 +50,10 @@ class AppDependencies {
         listMoviesRouter.setMovieDetailsRouter(movieDetailsRouter: movieDetailsRouter)
     }
     
-    func configMovieDetailModul(titleMovie : String) -> MovieDetailsViewController {
+    func configMovieDetailModul(movie : Movie) -> MovieDetailsViewController {
         instanceClassDetailModul()
         
-        configClassModulDetail(titleMovie: titleMovie)
+        configClassModulDetail(movie: movie)
         
         return movieDetailsView
     }
@@ -62,24 +61,16 @@ class AppDependencies {
     func instanceClassDetailModul () {
         movieDetailsView = MovieDetailsViewController()
         movieDetailsPresenter = MovieDetailsPresenter()
-        movieDetailsInteractor = GetMovieDetailsInteractor()
     }
     
-    func configClassModulDetail ( titleMovie : String) {
-        injectDependenciesDetailInteractor()
-        injectDependenciesDetailPresenter(titleMovie: titleMovie)
+    func configClassModulDetail ( movie : Movie) {
+        injectDependenciesDetailPresenter(movie: movie)
         injectDependenciesDetailView()
     }
     
-    func injectDependenciesDetailInteractor() {
-        movieDetailsInteractor.setMovieRepository(movieRepository: movieRepositoryDependency)
-        movieDetailsInteractor.setPresenter(presenter: movieDetailsPresenter)
-    }
-    
-    func injectDependenciesDetailPresenter( titleMovie : String) {
-        movieDetailsPresenter.setInteractor(interactor: movieDetailsInteractor)
+    func injectDependenciesDetailPresenter( movie : Movie) {
         movieDetailsPresenter.setMovieDetailView(movieDetailsView: movieDetailsView)
-        movieDetailsPresenter.setTitle(title: titleMovie)
+        movieDetailsPresenter.setTitle(movie: movie)
     }
     
     func injectDependenciesDetailView() {

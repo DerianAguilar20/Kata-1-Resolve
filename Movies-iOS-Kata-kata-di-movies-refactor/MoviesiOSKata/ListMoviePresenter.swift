@@ -13,7 +13,7 @@ protocol ListMoviesView {
 }
 
 protocol ListMovieRouter {
-    func presentMovieDetailsView ( titleMovie : String)
+    func presentMovieDetailsView ( movie : Movie)
 }
 
 class ListMoviePresenter {
@@ -36,16 +36,16 @@ class ListMoviePresenter {
     }
     
     func presentDetailMovie ( index : Int) {
-        let title = getTitleMovie(index: index)
-        presentMovieDetail(title: title)
+        let movie = getTitleMovie(index: index)
+        presentMovieDetail(movie: movie)
     }
     
-    func presentMovieDetail ( title : String) {
-        listMoviesRouter.presentMovieDetailsView(titleMovie: title)
+    func presentMovieDetail ( movie : Movie) {
+        listMoviesRouter.presentMovieDetailsView(movie: movie)
     }
     
-    func getTitleMovie ( index : Int) -> String {
-        movies[index].title!
+    func getTitleMovie ( index : Int) -> Movie {
+        movies[index]
     }
     
     func reloadMovies () {

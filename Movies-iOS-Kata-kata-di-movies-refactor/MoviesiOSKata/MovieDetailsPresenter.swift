@@ -12,29 +12,18 @@ protocol MovieDetailsView {
 
 class MovieDetailsPresenter {
     private var movieDetailsView : MovieDetailsView!
-    private var interactor : GetMovieDetailsInteractorInput!
     
-    private var title : String!
+    private var movie : Movie!
     
     func setMovieDetailView ( movieDetailsView : MovieDetailsView) {
         self.movieDetailsView = movieDetailsView
     }
     
-    func setInteractor ( interactor : GetMovieDetailsInteractorInput) {
-        self.interactor = interactor
-    }
-    
-    func setTitle ( title : String) {
-        self.title = title
+    func setTitle ( movie : Movie) {
+        self.movie = movie
     }
     
     func getMovieDetails () {
-        interactor.getMovieDetails(title: title)
-    }
-}
-
-extension MovieDetailsPresenter : GetMovieDetailsInteractorOutput {
-    func showMovieDetails(movie: Movie) {
         movieDetailsView.showMovieDetails(movie: movie)
     }
 }

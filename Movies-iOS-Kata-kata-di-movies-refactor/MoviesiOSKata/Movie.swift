@@ -6,7 +6,6 @@
 //  Copyright © 2016 xurxodev. All rights reserved.
 //
 
-import Foundation
 
 class Movie {
     var image:String?

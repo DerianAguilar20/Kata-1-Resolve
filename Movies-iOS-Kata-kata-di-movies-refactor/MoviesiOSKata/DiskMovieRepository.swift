@@ -37,11 +37,6 @@ class DiskMovieRepository : MovieRepository {
         return movies;
     }
     
-    func getMovieDetails ( title : String) -> Movie {
-        let movies = getMovies()
-        return movies.first(where: { $0.title == title})!
-    }
-    
     func simulateDelay() -> Void {
         sleep(2)
     }

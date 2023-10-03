@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MovieDetailRouter {
-    func presentMovieDetailsView ( viewReference : UIViewController, titleMovie : String)
+    func presentMovieDetailsView ( viewReference : UIViewController, movie : Movie)
 }
 
 class MovieDetailsRouter : MovieDetailRouter {
@@ -19,8 +19,8 @@ class MovieDetailsRouter : MovieDetailRouter {
         self.appDependencies = appDependencies
     }
     
-    func presentMovieDetailsView ( viewReference : UIViewController, titleMovie : String) {
-        let viewDetails = appDependencies.configMovieDetailModul(titleMovie: titleMovie)
+    func presentMovieDetailsView ( viewReference : UIViewController, movie : Movie) {
+        let viewDetails = appDependencies.configMovieDetailModul(movie: movie)
         
         presentView( view : viewDetails, viewRef : viewReference)
     }

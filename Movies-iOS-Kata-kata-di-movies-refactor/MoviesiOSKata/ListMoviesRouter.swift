@@ -20,7 +20,7 @@ class ListMoviesRouter : ListMovieRouter {
         self.listMoviesView = listMoviesView
     }
     
-    func presentMovieDetailsView ( titleMovie : String) {
-        movieDetailsRouter.presentMovieDetailsView(viewReference: listMoviesView as! UIViewController, titleMovie: titleMovie)
+    func presentMovieDetailsView ( movie : Movie) {
+        movieDetailsRouter.presentMovieDetailsView(viewReference: listMoviesView as! UIViewController, movie: movie)
     }
 }
