@@ -36,7 +36,7 @@ class ListMoviePresenter {
     }
     
     func presentDetailMovie ( index : Int) {
-        let movie = getTitleMovie(index: index)
+        let movie = getMovie(index: index)
         presentMovieDetail(movie: movie)
     }
     
@@ -44,7 +44,7 @@ class ListMoviePresenter {
         listMoviesRouter.presentMovieDetailsView(movie: movie)
     }
     
-    func getTitleMovie ( index : Int) -> Movie {
+    func getMovie ( index : Int) -> Movie {
         movies[index]
     }
     
