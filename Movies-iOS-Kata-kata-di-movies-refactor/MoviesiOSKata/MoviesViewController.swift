@@ -21,6 +21,7 @@ class MoviesViewController : UIViewController {
 
         moviesTableView.tableFooterView = UIView()
         moviesTableView.dataSource = self
+        moviesTableView.delegate = self
         
         presenter.reloadMovies()
     }
@@ -44,21 +45,17 @@ class MoviesViewController : UIViewController {
 
 extension MoviesViewController : ListMoviesView {
     func refresh() {
-        DispatchQueue.main.async {
-            self.reloadTable()
-            self.changeTextLabel(text: "Loading ...")
-        }
+        reloadTable()
+        changeTextLabel(text: "Loading ...")
     }
     
     func loadMovies(movies : [Movie]) {
-        DispatchQueue.main.async {
-            self.reloadTable()
-            self.changeTextLabel(text: "Movies: " + String(movies.count))
-        }
+        reloadTable()
+        changeTextLabel(text: "Movies: " + String(movies.count))
     }
 }
 
-extension MoviesViewController : UITableViewDataSource {
+extension MoviesViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.presenter.movies.count
     }
@@ -71,5 +68,9 @@ extension MoviesViewController : UITableViewDataSource {
         cell.configureCell(data: movie)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.presentDetailMovie(index: indexPath.row)
     }
 }

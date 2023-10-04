@@ -37,7 +37,7 @@ class DiskMovieRepository : MovieRepository {
         return movies;
     }
     
-    func simulateDelay() -> Void{
-            sleep(2)
-        }
+    func simulateDelay() -> Void {
+        sleep(2)
+    }
 }

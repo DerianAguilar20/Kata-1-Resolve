@@ -6,48 +6,66 @@
 //  Copyright © 2023 xurxodev. All rights reserved.
 //
 
-import Foundation
-
-protocol MovieRepository {
-    func getMovies() -> [Movie]
-}
 
 protocol ListMoviesView {
     func refresh ()
     func loadMovies (movies : [Movie])
 }
 
+protocol ListMovieRouter {
+    func presentMovieDetailsView ( movie : Movie)
+}
+
 class ListMoviePresenter {
     private var listMoviesView : ListMoviesView!
-    private var movieRepository : MovieRepository!
+    private var getListMovieInteractor : GetListMovieInteractorInput!
+    private var listMoviesRouter : ListMovieRouter!
     
     var movies = [Movie]()
     
-    func setMovieRepository( movieRepository : MovieRepository) {
-        self.movieRepository = movieRepository
+    func setListMovieInteractor( listMovieInteractor : GetListMovieInteractorInput ) {
+        self.getListMovieInteractor = listMovieInteractor
     }
     
-    func setListMovieView( listMovieView : ListMoviesView ) {
-        self.listMoviesView = listMovieView
+    func setListMoviesView( listMoviesView : ListMoviesView) {
+        self.listMoviesView = listMoviesView
+    }
+    
+    func setListMovieRouter ( listMoviesRouter : ListMovieRouter) {
+        self.listMoviesRouter = listMoviesRouter
+    }
+    
+    func presentDetailMovie ( index : Int) {
+        let movie = getMovie(index: index)
+        presentMovieDetail(movie: movie)
+    }
+    
+    func presentMovieDetail ( movie : Movie) {
+        listMoviesRouter.presentMovieDetailsView(movie: movie)
+    }
+    
+    func getMovie ( index : Int) -> Movie {
+        movies[index]
     }
     
     func reloadMovies () {
         refreshListMovies()
-        listMovies()
+        getListMovies()
     }
     
-    func listMovies () {
-        DispatchQueue.global(qos: .background).async {
-            self.movies = self.movieRepository.getMovies()
-            
-            DispatchQueue.main.async {
-                self.listMoviesView?.loadMovies(movies : self.movies)
-            }
-        }
+    func getListMovies () {
+        getListMovieInteractor.getListMovies()
     }
     
     func refreshListMovies () {
         movies.removeAll()
         listMoviesView?.refresh()
+    }
+}
+
+extension ListMoviePresenter  : GetListMovieInteractorOutput {
+    func showListMovies(movies: [Movie]) {
+        self.movies = movies
+        listMoviesView?.loadMovies(movies: movies)
     }
 }
