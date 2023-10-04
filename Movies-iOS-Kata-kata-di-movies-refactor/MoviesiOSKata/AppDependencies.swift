@@ -70,7 +70,7 @@ class AppDependencies {
     
     func injectDependenciesDetailPresenter( movie : Movie) {
         movieDetailsPresenter.setMovieDetailView(movieDetailsView: movieDetailsView)
-        movieDetailsPresenter.setTitle(movie: movie)
+        movieDetailsPresenter.setMovie(movie: movie)
     }
     
     func injectDependenciesDetailView() {

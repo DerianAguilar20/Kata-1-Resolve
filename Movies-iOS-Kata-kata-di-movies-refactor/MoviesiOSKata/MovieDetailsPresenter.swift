@@ -19,7 +19,7 @@ class MovieDetailsPresenter {
         self.movieDetailsView = movieDetailsView
     }
     
-    func setTitle ( movie : Movie) {
+    func setMovie ( movie : Movie) {
         self.movie = movie
     }
     

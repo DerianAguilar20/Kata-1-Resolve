@@ -22,10 +22,10 @@ class MovieDetailsRouter : MovieDetailRouter {
     func presentMovieDetailsView ( viewReference : UIViewController, movie : Movie) {
         let viewDetails = appDependencies.configMovieDetailModul(movie: movie)
         
-        presentView( view : viewDetails, viewRef : viewReference)
+        presentView( viewMovieDetails : viewDetails, viewRef : viewReference)
     }
     
-    func presentView( view : MovieDetailsViewController, viewRef : UIViewController) {
-        viewRef.navigationController?.present(view, animated: true)
+    func presentView( viewMovieDetails : MovieDetailsViewController, viewRef : UIViewController) {
+        viewRef.navigationController?.present(viewMovieDetails, animated: true)
     }
 }
